@@ -50,4 +50,12 @@ public class QuizSettings {
     public QuizDifficulty getQuizDifficulty() {
         return _difficultyPreset;
     }
+
+    public QuizLength getQuizLength(){
+        return _quizLengthPreset;
+    }
+
+    public QuizMode getQuizMode(){
+        return _quizMode;
+    }
 }
