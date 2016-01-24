@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category_sports">Sports</string>
+    <string name="category_geographics">Geographics</string>
+    <string name="category_history">History</string>
+</resources>

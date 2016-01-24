@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">QuizDroid</string>
+    <string name="app_name">Quiz Droid</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_quiz_stage">QuizStage</string>
 </resources>
