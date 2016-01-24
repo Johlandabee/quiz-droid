@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quiz_length_short">Short</string>
+    <string name="quiz_length_medium">Medium</string>
+    <string name="quiz_length_long">Long</string>
+    <string name="quiz_length_very_long">Very Long</string>
+</resources>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
 import de.thenutheads.jlndbe.quizdroid.R;
 
 /**
@@ -162,5 +163,9 @@ public class MainMenu extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    public void DEBUG_onClickMethod(View view){
+        QuizManager.getInstance().buildQuestionQueue();
     }
 }

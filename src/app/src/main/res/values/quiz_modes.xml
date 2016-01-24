@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quiz_mode_versus">Versus</string>
+    <string name="quiz_mode_singleplayer">Singleplayer</string>
+</resources>

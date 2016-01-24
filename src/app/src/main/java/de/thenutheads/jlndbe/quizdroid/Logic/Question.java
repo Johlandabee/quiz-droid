@@ -7,7 +7,7 @@ public class Question {
     private int _id;
     private String[] _questionData;
 
-    public Question(int id, String question, String correct_answer, String answer_b, String answer_c, String answer_d, String language){
+    public Question(int id, String question, String correct_answer, String answer_b, String answer_c, String answer_d, String locale){
         _id = id;
         _questionData = new String[]{
                question,
@@ -15,7 +15,7 @@ public class Question {
                answer_b,
                answer_c,
                answer_d,
-               language
+               locale
         };
     }
 

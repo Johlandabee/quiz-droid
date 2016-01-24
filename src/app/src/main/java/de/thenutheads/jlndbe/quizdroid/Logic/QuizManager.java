@@ -1,26 +1,29 @@
 package de.thenutheads.jlndbe.quizdroid.Logic;
 
 import android.content.Context;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.util.Queue;
+import java.util.List;
 import de.thenutheads.jlndbe.quizdroid.DatabaseHelper;
-import de.thenutheads.jlndbe.quizdroid.QuizDataContract;
 
 /**
  * Created by Jlndbe on 24.01.2016.
  */
 public class QuizManager {
     private final static String DEBUG_LOG_TAG = "QDQuizManager";
+    private final boolean DEBUG_IGNORE_CATEGORY = false;
 
     private static QuizManager _instance;
     private static QuizManagerState _state = QuizManagerState.UNINITIALIZED;
 
     private Context _context;
-    private DatabaseHelper _dbHelper;
+
     private QuizSettings _quizSettings;
 
-    private Queue<Question> _questionQueue;
+    private List<Question> _questionQueue;
 
     public static QuizManager getInstance() {
         if (_state == QuizManagerState.UNINITIALIZED) {
@@ -34,9 +37,6 @@ public class QuizManager {
     private QuizManager(Context context) {
         Log.d(DEBUG_LOG_TAG, "QuizManager(): Initializing...");
 
-        _dbHelper = new DatabaseHelper(context);
-        _state = QuizManagerState.INITIALIZED;
-
         Log.d(DEBUG_LOG_TAG, "QuizManager(): Initialized!");
     }
 
@@ -47,6 +47,7 @@ public class QuizManager {
         }
 
         _instance = new QuizManager(context);
+        _state = QuizManagerState.INITIALIZED;
     }
 
     public void setContext(Context context){
@@ -54,21 +55,37 @@ public class QuizManager {
         Log.d(DEBUG_LOG_TAG, "setContext(): Context set!");
     }
 
-    private void buildQuestionQueue()
+    /**
+     * https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html
+     */
+    public void buildQuestionQueue()
     {
-        String[] projection = {
-                QuizDataContract.QuizData._ID,
-                QuizDataContract.QuizData.COLUMN_NAME_CATEGORY,
-                QuizDataContract.QuizData.COLUMN_NAME_DIFFICULTY,
-                QuizDataContract.QuizData.COLUMN_NAME_QUESTION,
-                QuizDataContract.QuizData.COLUMN_NAME_CORRECT_ANSWER,
-                QuizDataContract.QuizData.COLUMN_NAME_ANSWER_B,
-                QuizDataContract.QuizData.COLUMN_NAME_ANSWER_C,
-                QuizDataContract.QuizData.COLUMN_NAME_ANSWER_D,
-                QuizDataContract.QuizData.COLUMN_NAME_LANGUAGE
-        };
+        // DEBUG BEGIN
+        _quizSettings = new QuizSettings(QuizDifficulty.EASY,
+                new QuizCategory(1, "category_history"),
+                QuizLength.MEDIUM, QuizMode.SINGLEPLAYER);
+
+        // DEBUG END
+
+        SQLiteDatabase db = DatabaseHelper.getInstance().getDatabase();
+
+        String sql = "SELECT quiz_data._id,quiz_data.question," +
+                "quiz_data.correct_answer,quiz_data.answer_b," +
+                "quiz_data.answer_c,quiz_data.answer_d," +
+                "quiz_data.difficulty, quiz_categories.categoryname," +
+                "quiz_localization.languagecode " +
+                "FROM quiz_data, quiz_categories, quiz_localization " +
+                "WHERE quiz_data.category=quiz_categories._id " +
+                "AND quiz_data.locale=quiz_localization._id ";
+
+        if(!DEBUG_IGNORE_CATEGORY)
+            sql+= "AND quiz_categories.categoryname=" + "'" +
+                    _quizSettings.getQuizCategory().getCategoryName() + "'";
+
+        Cursor c = db.rawQuery(sql, null);
 
 
+        c.close();
     }
 
     public void newGame (QuizSettings settings){
