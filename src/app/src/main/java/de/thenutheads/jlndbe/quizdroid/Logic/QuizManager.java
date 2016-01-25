@@ -103,8 +103,8 @@ public class QuizManager {
         String sql = "SELECT quiz_data._id,quiz_data.question," +
                 "quiz_data.correct_answer,quiz_data.answer_b," +
                 "quiz_data.answer_c,quiz_data.answer_d," +
-                "quiz_data.difficulty, quiz_categories.categoryname," +
-                "quiz_localization.languagecode " +
+                "quiz_data.difficulty, quiz_categories.category_name," +
+                "quiz_localization.language_code " +
                 "FROM quiz_data, quiz_categories, quiz_localization " +
                 "WHERE quiz_data.category=quiz_categories._id " +
                 "AND quiz_data.locale=quiz_localization._id ";
@@ -113,7 +113,7 @@ public class QuizManager {
             sql+="AND quiz_data.difficulty<=" + _qSettings.getQuizDifficulty().getValue() + " ";
 
         if(!DEBUG_IGNORE_CATEGORY)
-            sql+= "AND quiz_categories.categoryname=" + "'" +
+            sql+= "AND quiz_categories.category_name=" + "'" +
                     _qSettings.getQuizCategory().getCategoryName() + "'";
 
         Cursor c = DatabaseHelper.getInstance().getDb().rawQuery(sql, null);
@@ -127,7 +127,7 @@ public class QuizManager {
                                 c.getString(c.getColumnIndex("answer_b")),
                                 c.getString(c.getColumnIndex("answer_c")),
                                 c.getString(c.getColumnIndex("answer_d")),
-                                c.getString(c.getColumnIndex("languagecode")))
+                                c.getString(c.getColumnIndex("language_code")))
                 );
                 c.moveToNext();
             }
