@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_db_could_not_copy">Could not copy the quiz database. Please ensure you have the proper permissions set.</string>
+    <string name="error_db_could_not_open">Could not open the quiz database.</string>
+</resources>

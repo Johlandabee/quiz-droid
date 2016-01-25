@@ -180,6 +180,6 @@ public class MainMenu extends AppCompatActivity {
         );
 
 
-        QuizManager.getInstance().startNewGame(settings);
+        QuizManager.getInstance().start(settings);
     }
 }

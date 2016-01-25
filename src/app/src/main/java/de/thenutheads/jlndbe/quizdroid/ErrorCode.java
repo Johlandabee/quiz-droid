@@ -1,7 +1,9 @@
 package de.thenutheads.jlndbe.quizdroid;
 
+import android.content.Context;
+
 /**
- * Created by Jlndbe on 24.01.2016.
+ * Created by Jlndbe on 25.01.2016.
  * <p/>
  * <p/>
  * The MIT License (MIT)
@@ -26,8 +28,42 @@ package de.thenutheads.jlndbe.quizdroid;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public enum DatabaseHelperState {
-    UNINITIALIZED,
-    CLOSED,
-    OPEN,
+
+public enum ErrorCode {
+    DB_COULD_NOT_COPY(1010),
+    DB_COULD_NOT_OPEN(1020);
+
+    ErrorCode(int code){
+        _code = code;
+    }
+
+    private final int _code;
+
+    //--------------------------------------------------------------------------------------------->
+
+    public int getValue(){
+        return _code;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    @Override
+    public String toString(){
+        return toLocalizedString(this, App.getContext());
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    private String toLocalizedString(ErrorCode code, Context context){
+        switch (code) {
+            case DB_COULD_NOT_COPY:
+                return context.getString(R.string.error_db_could_not_copy);
+            case DB_COULD_NOT_OPEN:
+                return context.getString(R.string.error_db_could_not_open);
+            default:
+                return null;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------->
 }
