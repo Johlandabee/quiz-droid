@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper      _instance;
     private static DatabaseHelperState _state = DatabaseHelperState.UNINITIALIZED;
 
-    private static final String DB_NAME = "quiz.db";
+    private static final String DB_NAME = "release_quiz.db";
     private static final String DB_PATH = "/data/data/de.thenutheads.jlndbe.quizdroid/databases/";
     private static final String DB_PATH_COMPLETE = DB_PATH + DB_NAME;
     private static final int    DB_VERSION = 1;
@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 copyDbFromAssets();
             } catch (IOException e){
                 Toast.makeText(_context, ErrorCode.DB_COULD_NOT_COPY.toString(), Toast.LENGTH_LONG).show();
-                System.exit(ErrorCode.DB_COULD_NOT_COPY.getValue());
+                App.delayedExit(ErrorCode.DB_COULD_NOT_COPY.getValue());
             }
         }
 
@@ -107,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (SQLiteException e){
             Toast.makeText(_context, ErrorCode.DB_COULD_NOT_OPEN.toString(), Toast.LENGTH_LONG).show();
-            System.exit(ErrorCode.DB_COULD_NOT_OPEN.getValue());
+            App.delayedExit(ErrorCode.DB_COULD_NOT_OPEN.getValue());
         }
         return _db;
     }

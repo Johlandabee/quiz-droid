@@ -29,12 +29,15 @@ package de.thenutheads.jlndbe.quizdroid.Logic;
 
 public class Question {
     private int _id;
+    private int _difficulty;
     private String[] _questionData;
 
     //--------------------------------------------------------------------------------------------->
 
-    public Question(int id, String question, String correct_answer, String answer_b, String answer_c, String answer_d, String locale){
+    public Question(int id, String question, String correct_answer, String answer_b,
+                    String answer_c, String answer_d, String locale, int difficulty){
         _id = id;
+        _difficulty = difficulty;
         _questionData = new String[]{
                question,
                correct_answer,
@@ -49,6 +52,12 @@ public class Question {
 
     public int getId(){
         return _id;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public int getDifficulty() {
+        return _difficulty;
     }
 
     //--------------------------------------------------------------------------------------------->

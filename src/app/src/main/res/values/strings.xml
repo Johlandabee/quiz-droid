@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">Quiz Droid</string>
-
     <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_content">QUIZ\nDROID</string>
+    <string name="title_activity_quiz_stage">Quiz Stage</string>
+    <string name="title_activity_profile_creation">ProfileCreation</string>
+    <string name="title_activity_quiz_setup">Quiz Setup</string>
+    <string name="title_activity_critical_error_page">CriticalErrorPage</string>
 
-    <string name="title_activity_quiz_stage">QuizStage</string>
+    <string name="title_error_page">Ooops!</string>
+    <string name="debug_lorem_ipsum">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</string>
+    <string name="debug_lorem_ipsum_short">Lorem ipsum dolor sit amet.</string>
+
+    <string name="quiz_end_no_trails">This was your last try.</string>
+    <string name="quiz_end_last_question">Last question.</string>
+
+    <string name="title_activity_results">Results</string>
 </resources>

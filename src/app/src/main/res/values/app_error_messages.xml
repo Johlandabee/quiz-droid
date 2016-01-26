@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_db_could_not_copy">Could not copy the quiz database. Please ensure you have the proper permissions set.</string>
-    <string name="error_db_could_not_open">Could not open the quiz database.</string>
+    <string name="error_db_could_not_copy">Could not copy the quiz database. App will be closed in 5 seconds</string>
+    <string name="error_db_could_not_open">Could not open the quiz database. App will be closed in 5 seconds</string>
+    <string name="error_db_corrupt">Database corrupt. App will be closed in 5 seconds</string>
+
+    <string name="error_xml_category_not_defined">Category not defined.</string>
 </resources>

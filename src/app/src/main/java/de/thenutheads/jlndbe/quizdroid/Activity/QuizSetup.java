@@ -1,29 +1,20 @@
 package de.thenutheads.jlndbe.quizdroid.Activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import de.thenutheads.jlndbe.quizdroid.DatabaseHelper;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizCategory;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizDifficulty;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizLength;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizMode;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizSettings;
 import de.thenutheads.jlndbe.quizdroid.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MainMenu extends AppCompatActivity {
+public class QuizSetup extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -98,7 +89,7 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_quiz_setup);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -170,19 +161,5 @@ public class MainMenu extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-
-    public void DEBUG_onClickMethod(View view){
-
-        QuizSettings settings = new QuizSettings(
-                QuizDifficulty.EASY,
-                new QuizCategory(1, "category_history"),
-                QuizLength.MEDIUM,
-                QuizMode.SINGLEPLAYER
-        );
-
-
-        QuizManager.getInstance().start(settings);
-        startActivity(new Intent(this, QuizStage.class));
     }
 }

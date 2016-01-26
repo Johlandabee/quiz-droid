@@ -33,22 +33,30 @@ import de.thenutheads.jlndbe.quizdroid.R;
  */
 
 public enum QuizDifficulty {
-    EASY (1),
-    NORMAL (3),
-    HARD (5);
+    EASY (1,3),
+    NORMAL (3,2),
+    HARD (5,1);
 
     private final int _level;
+    private final int _trails;
 
     //--------------------------------------------------------------------------------------------->
 
-    QuizDifficulty(int level){
+    QuizDifficulty(int level, int trails){
         _level = level;
+        _trails = trails;
     }
 
     //--------------------------------------------------------------------------------------------->
 
     public int getValue() {
         return _level;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public int getTrails() {
+        return _trails;
     }
 
     //--------------------------------------------------------------------------------------------->

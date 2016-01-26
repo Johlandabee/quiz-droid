@@ -12,15 +12,17 @@
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
         android:textColor="#33b5e5"
         android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="300dp" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,6 +47,70 @@
                 android:text="@string/dummy_button" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/txt_question"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.15"
+                android:text="@string/debug_lorem_ipsum"
+                android:textAlignment="gravity"
+                android:enabled="true"
+                android:focusable="false"
+                android:clickable="false"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:linksClickable="true"
+                android:gravity="top"
+                android:backgroundTint="#96787878"
+                android:backgroundTintMode="multiply"
+                android:background="#64787878" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_a"
+                android:layout_weight="0.02"
+                android:textStyle="normal"
+                android:onClick="onSelectAnswer"
+                android:text="@string/debug_lorem_ipsum_short" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_b"
+                android:layout_weight="0.02"
+                android:textStyle="normal"
+                android:text="@string/debug_lorem_ipsum_short"
+                android:onClick="onSelectAnswer" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_c"
+                android:layout_weight="0.02"
+                android:textStyle="normal"
+                android:text="@string/debug_lorem_ipsum_short"
+                android:onClick="onSelectAnswer" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_d"
+                android:layout_weight="0.02"
+                android:textStyle="normal"
+                android:text="@string/debug_lorem_ipsum_short"
+                android:onClick="onSelectAnswer" />
+        </LinearLayout>
+
     </FrameLayout>
 
 </FrameLayout>

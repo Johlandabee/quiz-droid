@@ -3,6 +3,10 @@ package de.thenutheads.jlndbe.quizdroid;
 import android.app.Application;
 import android.content.Context;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
 
 /**
@@ -35,15 +39,17 @@ import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
 public class App extends Application {
     private static Context _context;
 
+    public static final int APP_CLOSE_ON_ERROR_DELAY = 5;
+
     //--------------------------------------------------------------------------------------------->
 
     @Override
     public void onCreate(){
         super.onCreate();
+        _context = this;
+
         DatabaseHelper.doInitialization(this);
         QuizManager.doInitialization(this);
-
-        _context = this;
     }
 
     //--------------------------------------------------------------------------------------------->
@@ -54,4 +60,12 @@ public class App extends Application {
 
     //--------------------------------------------------------------------------------------------->
 
+    public static void delayedExit(final int code){
+        Executors.newSingleThreadScheduledExecutor().schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.exit(code);
+            }
+        }, APP_CLOSE_ON_ERROR_DELAY, TimeUnit.SECONDS);
+    }
 }

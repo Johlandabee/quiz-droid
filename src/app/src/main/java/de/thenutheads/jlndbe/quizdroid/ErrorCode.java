@@ -31,7 +31,10 @@ import android.content.Context;
 
 public enum ErrorCode {
     DB_COULD_NOT_COPY(1010),
-    DB_COULD_NOT_OPEN(1020);
+    DB_COULD_NOT_OPEN(1020),
+    DB_CORRUPT(1030),
+
+    XML_CATEGORY_NOT_DEFINED(2010);
 
     ErrorCode(int code){
         _code = code;
@@ -60,6 +63,10 @@ public enum ErrorCode {
                 return context.getString(R.string.error_db_could_not_copy);
             case DB_COULD_NOT_OPEN:
                 return context.getString(R.string.error_db_could_not_open);
+            case DB_CORRUPT:
+                return context.getString(R.string.error_db_could_not_open);
+            case XML_CATEGORY_NOT_DEFINED:
+                return context.getString(R.string.error_xml_category_not_defined);
             default:
                 return null;
         }

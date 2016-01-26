@@ -21,9 +21,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activity.ProfileSelection"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_profile_creation"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".Activity.QuizSetup"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_quiz_setup"
+            android:theme="@style/FullscreenTheme" />
+        <activity
             android:name=".Activity.QuizStage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_quiz_stage"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".Activity.Results"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_results"
             android:theme="@style/FullscreenTheme"></activity>
     </application>
 

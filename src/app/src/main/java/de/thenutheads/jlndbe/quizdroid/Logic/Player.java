@@ -27,4 +27,49 @@ package de.thenutheads.jlndbe.quizdroid.Logic;
  * SOFTWARE.
  */
 public class Player {
+    private String _name;
+    private int _id;
+    private int _score;
+    private int _trails;
+    private int _correct;
+
+    public Player(String name, int id){
+        _name = name;
+        _id = id;
+        _score = 0;
+        _trails = 0;
+        _correct = 0;
+    }
+
+    public String getName(){
+        return _name;
+    }
+
+    public int getId(){
+        return _id;
+    }
+
+    public int getScore(){
+        return _score;
+    }
+
+    public void addScore(int score){
+        _score += score;
+    }
+
+    public void addTrail(){
+        _trails++;
+    }
+
+    public int getTrails(){
+        return _trails;
+    }
+
+    public int getCorrectCount(){
+        return _correct;
+    }
+
+    public void addCorrect(){
+        _correct++;
+    }
 }

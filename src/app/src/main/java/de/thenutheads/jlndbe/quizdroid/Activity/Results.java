@@ -1,21 +1,18 @@
 package de.thenutheads.jlndbe.quizdroid.Activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
-import de.thenutheads.jlndbe.quizdroid.DatabaseHelper;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizCategory;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizDifficulty;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizLength;
+import org.w3c.dom.Text;
+
+import de.thenutheads.jlndbe.quizdroid.Logic.Player;
 import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizMode;
 import de.thenutheads.jlndbe.quizdroid.Logic.QuizSettings;
 import de.thenutheads.jlndbe.quizdroid.R;
 
@@ -23,7 +20,7 @@ import de.thenutheads.jlndbe.quizdroid.R;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MainMenu extends AppCompatActivity {
+public class Results extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -98,7 +95,7 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_results);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -117,6 +114,35 @@ public class MainMenu extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        setData();
+    }
+
+
+    private void setData(){
+        TextView name = (TextView) findViewById(R.id.name),
+                 score = (TextView) findViewById(R.id.score),
+                 correctAnswers = (TextView) findViewById(R.id.correct_answers),
+                 category = (TextView) findViewById(R.id.category),
+                 difficulty = (TextView) findViewById(R.id.difficulty);
+
+        Player player = QuizManager.getInstance().getActivePlayer();
+        QuizSettings settings = QuizManager.getInstance().getSettings();
+
+        name.setText(player.getName());
+        score.setText(String.format("%s",player.getScore()));
+        correctAnswers.setText(String.format("%d/%d", player.getCorrectCount(),
+                settings.getQuizLength().getValue()));
+
+        category.setText(settings.getQuizCategory().getLocalizedName());
+
+
+        difficulty.setText(settings.getQuizDifficulty().toString());
+
+    }
+
+    public void onClickOk(View view){
+        finish();
     }
 
     @Override
@@ -170,19 +196,5 @@ public class MainMenu extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-
-    public void DEBUG_onClickMethod(View view){
-
-        QuizSettings settings = new QuizSettings(
-                QuizDifficulty.EASY,
-                new QuizCategory(1, "category_history"),
-                QuizLength.MEDIUM,
-                QuizMode.SINGLEPLAYER
-        );
-
-
-        QuizManager.getInstance().start(settings);
-        startActivity(new Intent(this, QuizStage.class));
     }
 }
