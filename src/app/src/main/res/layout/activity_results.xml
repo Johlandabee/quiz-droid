@@ -5,15 +5,6 @@
     android:background="#0099cc"
     tools:context="de.thenutheads.jlndbe.quizdroid.Activity.Results">
 
-    // Player Name
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_name"
-        android:id="@+id/label_player_name"
-        android:labelFor="@id/out_player_name"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,8 +16,58 @@
         android:layout_toRightOf="@+id/label_player_name"
         android:layout_alignBaseline="@+id/label_player_name"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/debug_default_text"
+        android:id="@+id/out_score"
 
-    // Score
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/label_score"
+        android:layout_alignBaseline="@+id/label_score"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/debug_default_text"
+        android:id="@+id/out_correct_answers"
+
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/label_correct_answers"
+        android:layout_alignBaseline="@+id/label_correct_answers"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/debug_default_text"
+        android:id="@+id/out_category"
+
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/label_category"
+        android:layout_alignBaseline="@+id/label_category"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/debug_default_text"
+        android:id="@+id/out_difficulty"
+
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/label_difficulty"
+        android:layout_alignBaseline="@+id/label_difficulty"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_results_name"
+        android:id="@+id/label_player_name"
+        android:labelFor="@id/out_player_name"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,18 +81,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_score"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_score"
-        android:layout_alignBaseline="@+id/label_score"/>
-
-    // Correct Answers
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/label_results_correct_answers"
         android:id="@+id/label_correct_answers"
@@ -59,18 +88,6 @@
         android:labelFor="@id/out_correct_answers"
         android:layout_below="@+id/label_score"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_correct_answers"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_correct_answers"
-        android:layout_alignBaseline="@+id/label_correct_answers"/>
-
-    // Category
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,18 +101,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_category"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_category"
-        android:layout_alignBaseline="@+id/label_category"/>
-
-    // Difficulty
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/label_results_difficulty"
         android:id="@+id/label_difficulty"
@@ -103,18 +108,17 @@
         android:layout_below="@id/label_category"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_difficulty"
 
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_difficulty"
-        android:layout_alignBaseline="@+id/label_difficulty"/>
+    // Score
+
+    // Correct Answers
+
+    // Category
+
+    // Difficulty
 
     // Ok Button
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import de.thenutheads.jlndbe.quizdroid.R;
+
 public class ProfileSelection extends AppCompatActivity {
 
     @Override
