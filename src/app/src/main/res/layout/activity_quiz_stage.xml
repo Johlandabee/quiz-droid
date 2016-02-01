@@ -1,116 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
     tools:context="de.thenutheads.jlndbe.quizdroid.Activity.QuizStage">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:id="@+id/txt_question"
+        android:text="@string/debug_lorem_ipsum"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="300dp" />
+        android:layout_below="@id/txt_question">
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:id="@+id/btn_answer_a"
+            android:textStyle="normal"
+            android:onClick="onSelectAnswer"
+            android:text="@string/debug_lorem_ipsum_short"
+            />
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_answer_b"
+            android:textStyle="normal"
+            android:text="@string/debug_lorem_ipsum_short"
+            android:onClick="onSelectAnswer"
+            />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/txt_question"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.15"
-                android:text="@string/debug_lorem_ipsum"
-                android:textAlignment="gravity"
-                android:enabled="true"
-                android:focusable="false"
-                android:clickable="false"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:linksClickable="true"
-                android:gravity="top"
-                android:backgroundTint="#96787878"
-                android:backgroundTintMode="multiply"
-                android:background="#64787878" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_answer_c"
+            android:textStyle="normal"
+            android:text="@string/debug_lorem_ipsum_short"
+            android:onClick="onSelectAnswer"
+            />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_answer_a"
-                android:layout_weight="0.02"
-                android:textStyle="normal"
-                android:onClick="onSelectAnswer"
-                android:text="@string/debug_lorem_ipsum_short" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_answer_d"
+            android:textStyle="normal"
+            android:text="@string/debug_lorem_ipsum_short"
+            android:onClick="onSelectAnswer"
+            />
+    </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_answer_b"
-                android:layout_weight="0.02"
-                android:textStyle="normal"
-                android:text="@string/debug_lorem_ipsum_short"
-                android:onClick="onSelectAnswer" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_answer_c"
-                android:layout_weight="0.02"
-                android:textStyle="normal"
-                android:text="@string/debug_lorem_ipsum_short"
-                android:onClick="onSelectAnswer" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_answer_d"
-                android:layout_weight="0.02"
-                android:textStyle="normal"
-                android:text="@string/debug_lorem_ipsum_short"
-                android:onClick="onSelectAnswer" />
-        </LinearLayout>
-
-    </FrameLayout>
-
-</FrameLayout>
+</RelativeLayout>

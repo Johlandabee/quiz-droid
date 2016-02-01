@@ -1,5 +1,7 @@
 package de.thenutheads.jlndbe.quizdroid.Logic;
 
+import java.util.Arrays;
+
 /**
  * Created by Jlndbe on 24.01.2016.
  * <p/>
@@ -74,26 +76,14 @@ public class Question {
 
     //--------------------------------------------------------------------------------------------->
 
+    public String[] getAnswers(){
+        return Arrays.copyOfRange(_questionData, 1, 4);
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
     public String getCorrectAnswer(){
         return _questionData[1];
-    }
-
-    //--------------------------------------------------------------------------------------------->
-
-    public String getAnswerB(){
-        return _questionData[2];
-    }
-
-    //--------------------------------------------------------------------------------------------->
-
-    public String getAnswerC(){
-        return _questionData[3];
-    }
-
-    //--------------------------------------------------------------------------------------------->
-
-    public String getAnswerD(){
-        return _questionData[4];
     }
 
     //--------------------------------------------------------------------------------------------->
