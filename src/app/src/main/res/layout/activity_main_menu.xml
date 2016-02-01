@@ -16,4 +16,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Debug: Settings"
+        android:id="@+id/button"
+        android:onClick="DEBUG_onClickSettings"
+
+        android:layout_below="@id/btn_singleplayer"/>
+
 </RelativeLayout>

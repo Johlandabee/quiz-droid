@@ -34,4 +34,9 @@ public class MainMenu extends Activity {
         QuizManager.getInstance().start(settings);
         startActivity(new Intent(this, QuizStage.class));
     }
+
+    public void DEBUG_onClickSettings(View view){
+
+        startActivity(new Intent(this, QuizSetup.class));
+    }
 }

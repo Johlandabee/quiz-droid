@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/item_profile_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:contentDescription="@string/profile_icon_description" />
+
+    <TextView
+        android:id="@+id/item_player_name"
+        android:text="@string/example_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="6dp"
+        android:layout_alignBaseline="@+id/item_profile_icon"
+        android:layout_toRightOf="@+id/item_profile_icon"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:paddingRight="6dp"
+        android:id="@+id/profile_score"
+        android:text="@string/example_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/item_profile_icon"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="11dp" />
+
+    <TextView
+        android:id="@+id/profile_rounds"
+        android:text="@string/example_rounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/profile_score"
+        android:layout_alignBaseline="@id/profile_score"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/profile_icon_edit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@android:drawable/ic_menu_edit"
+        android:contentDescription="@string/item_edit_icon_description" />
+
+    <ImageView
+        android:id="@+id/studentIconDelete"
+        android:layout_alignBaseline="@id/profile_icon_edit"
+        android:layout_toLeftOf="@id/studentIconEdit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:onClick="onClickRemoveStudent"
+        android:contentDescription="@string/student_delete_icon_description" />
+
+</RelativeLayout>
