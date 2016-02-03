@@ -54,7 +54,8 @@
         android:layout_alignParentBottom="true"
 
         android:layout_margin="10dp"
-        android:contentDescription="@string/description_skip_question" />
+        android:contentDescription="@string/description_skip_question"
+        android:onClick="onClick_SkipQuestion" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,8 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txt_question"
-        android:id="@+id/linearLayout"
-        android:onClick="onClick_SkipQuestion">
+        android:id="@+id/linearLayout" >
 
         <Button
             android:layout_width="match_parent"

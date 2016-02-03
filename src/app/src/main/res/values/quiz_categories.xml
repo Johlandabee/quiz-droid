@@ -3,5 +3,6 @@
     <string name="category_sports">Sports</string>
     <string name="category_geographics">Geographics</string>
     <string name="category_history">History</string>
-    <string name="category_naturalsciences"></string>
+    <string name="category_naturalsciences">Naturalsciences</string>
+    <string name="category_default">All</string>
 </resources>

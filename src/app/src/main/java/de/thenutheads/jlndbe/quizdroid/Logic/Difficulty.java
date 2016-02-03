@@ -35,7 +35,8 @@ import de.thenutheads.jlndbe.quizdroid.R;
 public enum Difficulty {
     EASY (1,3),
     NORMAL (3,2),
-    HARD (5,1);
+    HARD (5,1),
+    ALL(0,5);
 
     private final int _level;
     private final int _trails;
@@ -76,6 +77,8 @@ public enum Difficulty {
                 return context.getString(R.string.quiz_difficulty_normal);
             case HARD:
                 return context.getString(R.string.quiz_difficulty_hard);
+            case ALL:
+                return context.getString(R.string.quiz_difficulty_all);
             default:
                 return null;
         }

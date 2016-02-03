@@ -172,14 +172,18 @@ public class QuizManager {
                 "AND quiz_data.locale=quiz_localization._id ";
 
         if(!App.DEBUG_IGNORE_DIFFICULTY) {
-            sql += "AND quiz_data.difficulty BETWEEN " +
-                    (_qSettings.getDifficulty().getValue() - 1) + " AND " +
-                    (_qSettings.getDifficulty().getValue() + 1) + " ";
+            if(!_qSettings.getDifficulty().equals(Difficulty.ALL)){
+                sql += "AND quiz_data.difficulty BETWEEN " +
+                        (_qSettings.getDifficulty().getValue() - 1) + " AND " +
+                        (_qSettings.getDifficulty().getValue() + 1) + " ";
+            }
         }
 
         if(!App.DEBUG_IGNORE_CATEGORY) {
-            sql += "AND quiz_categories.category_name=" + "'" +
-                    _qSettings.getCategory().getCategoryName() + "'";
+            if(!_qSettings.getCategory().getCategoryName().equals("category_default")); {
+                sql += "AND quiz_categories.category_name=" + "'" +
+                        _qSettings.getCategory().getCategoryName() + "'";
+            }
         }
 
         Cursor c = DatabaseHelper.getInstance().getDb().rawQuery(sql, null);
