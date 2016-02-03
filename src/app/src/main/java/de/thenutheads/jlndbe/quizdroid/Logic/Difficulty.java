@@ -1,5 +1,10 @@
 package de.thenutheads.jlndbe.quizdroid.Logic;
 
+import android.content.Context;
+
+import de.thenutheads.jlndbe.quizdroid.App;
+import de.thenutheads.jlndbe.quizdroid.R;
+
 /**
  * Created by Jlndbe on 24.01.2016.
  * <p/>
@@ -27,45 +32,53 @@ package de.thenutheads.jlndbe.quizdroid.Logic;
  * SOFTWARE.
  */
 
-public class QuizSettings {
+public enum Difficulty {
+    EASY (1,3),
+    NORMAL (3,2),
+    HARD (5,1);
 
-    private QuizDifficulty _difficultyPreset;
-    private QuizCategory _quizCategory;
-    private QuizLength _quizLengthPreset;
-    private QuizMode _quizMode;
+    private final int _level;
+    private final int _trails;
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizSettings(QuizDifficulty difficulty, QuizCategory category, QuizLength length, QuizMode mode) {
-        _quizLengthPreset = length;
-        _quizMode = mode;
-        _difficultyPreset = difficulty;
-
-        _quizCategory = category;
+    Difficulty(int level, int trails){
+        _level = level;
+        _trails = trails;
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizCategory getQuizCategory(){
-        return _quizCategory;
+    public int getValue() {
+        return _level;
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizDifficulty getQuizDifficulty() {
-        return _difficultyPreset;
+    public int getTrails() {
+        return _trails;
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizLength getQuizLength(){
-        return _quizLengthPreset;
+    @Override
+    public String toString(){
+        return toLocalizedString(this, App.getContext());
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizMode getQuizMode(){
-        return _quizMode;
+    private String toLocalizedString(Difficulty difficulty, Context context){
+        switch (difficulty) {
+            case EASY:
+                return context.getString(R.string.quiz_difficulty_easy);
+            case NORMAL:
+                return context.getString(R.string.quiz_difficulty_normal);
+            case HARD:
+                return context.getString(R.string.quiz_difficulty_hard);
+            default:
+                return null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------->

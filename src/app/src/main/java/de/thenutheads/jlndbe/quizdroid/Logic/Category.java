@@ -33,7 +33,7 @@ import de.thenutheads.jlndbe.quizdroid.R;
  * SOFTWARE.
  */
 
-public class QuizCategory {
+public class Category {
     private final String DEBUG_LOG_TAG = "QDQuizCategory";
 
     private int _id;
@@ -42,7 +42,7 @@ public class QuizCategory {
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizCategory(int id ,String categoryName){
+    public Category(int id, String categoryName){
         _id = id;
         _categoryName = categoryName;
 
@@ -52,9 +52,15 @@ public class QuizCategory {
            _localizedName = context.getString(context.getResources().getIdentifier(_categoryName, "string", context.getPackageName()));
         } catch (Exception e){
             _localizedName = _categoryName;
-            Log.d(DEBUG_LOG_TAG,String.format("QuizCategory(): %s", e.getLocalizedMessage()));
+            Log.d(DEBUG_LOG_TAG,String.format("Category(): %s", e.getLocalizedMessage()));
         }
 
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public String toString(){
+        return getLocalizedName();
     }
 
     //--------------------------------------------------------------------------------------------->

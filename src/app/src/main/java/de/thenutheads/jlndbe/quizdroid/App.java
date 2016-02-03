@@ -39,6 +39,10 @@ import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
 public class App extends Application {
     private static Context _context;
 
+    public static final boolean DEBUG_COPY_DATABASE = true;
+    public static final boolean DEBUG_IGNORE_CATEGORY = false;
+    public static final boolean DEBUG_IGNORE_DIFFICULTY = false;
+
     public static final int APP_CLOSE_ON_ERROR_DELAY = 5;
 
     //--------------------------------------------------------------------------------------------->

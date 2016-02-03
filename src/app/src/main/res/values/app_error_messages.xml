@@ -3,6 +3,6 @@
     <string name="error_db_could_not_copy">Could not copy the quiz database. App will be closed in 5 seconds</string>
     <string name="error_db_could_not_open">Could not open the quiz database. App will be closed in 5 seconds</string>
     <string name="error_db_corrupt">Database corrupt. App will be closed in 5 seconds</string>
-
     <string name="error_xml_category_not_defined">Category not defined.</string>
+    <string name="error_quiz_manager_not_initialized">QuizManager not initialized. App will be closed in 5 seconds</string>
 </resources>

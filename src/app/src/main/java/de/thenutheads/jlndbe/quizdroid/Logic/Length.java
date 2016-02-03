@@ -32,31 +32,24 @@ import de.thenutheads.jlndbe.quizdroid.R;
  * SOFTWARE.
  */
 
-public enum QuizDifficulty {
-    EASY (1,3),
-    NORMAL (3,2),
-    HARD (5,1);
+public enum Length {
+    SHORT(5),
+    MEDIUM(10),
+    LONG(20),
+    VERY_LONG(40);
 
-    private final int _level;
-    private final int _trails;
+    private final int _length;
 
     //--------------------------------------------------------------------------------------------->
 
-    QuizDifficulty(int level, int trails){
-        _level = level;
-        _trails = trails;
+    Length(int length){
+        _length = length;
     }
 
     //--------------------------------------------------------------------------------------------->
 
     public int getValue() {
-        return _level;
-    }
-
-    //--------------------------------------------------------------------------------------------->
-
-    public int getTrails() {
-        return _trails;
+        return _length;
     }
 
     //--------------------------------------------------------------------------------------------->
@@ -68,18 +61,21 @@ public enum QuizDifficulty {
 
     //--------------------------------------------------------------------------------------------->
 
-    private String toLocalizedString(QuizDifficulty difficulty, Context context){
-        switch (difficulty) {
-            case EASY:
-                return context.getString(R.string.quiz_difficulty_easy);
-            case NORMAL:
-                return context.getString(R.string.quiz_difficulty_normal);
-            case HARD:
-                return context.getString(R.string.quiz_difficulty_hard);
+    private String toLocalizedString(Length length, Context context){
+        switch (length) {
+            case SHORT:
+                return context.getString(R.string.quiz_length_short);
+            case MEDIUM:
+                return context.getString(R.string.quiz_length_medium);
+            case LONG:
+                return context.getString(R.string.quiz_length_long);
+            case VERY_LONG:
+                return context.getString(R.string.quiz_length_very_long);
             default:
                 return null;
         }
     }
 
     //--------------------------------------------------------------------------------------------->
+
 }

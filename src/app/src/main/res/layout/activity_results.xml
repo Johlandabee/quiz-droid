@@ -8,116 +8,135 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_player_name"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_player_name"
-        android:layout_alignBaseline="@+id/label_player_name"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_score"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_score"
-        android:layout_alignBaseline="@+id/label_score"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_correct_answers"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_correct_answers"
-        android:layout_alignBaseline="@+id/label_correct_answers"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_category"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_category"
-        android:layout_alignBaseline="@+id/label_category"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/debug_default_text"
-        android:id="@+id/out_difficulty"
-
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_difficulty"
-        android:layout_alignBaseline="@+id/label_difficulty"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_name"
-        android:id="@+id/label_player_name"
-        android:labelFor="@id/out_player_name"/>
+        android:text="@string/title_activity_results"
+        android:id="@+id/title_results"
+        android:layout_margin="20dp"
+        android:textStyle="bold" />
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_score"
-        android:id="@+id/label_score"
-        android:labelFor="@id/out_score"
+        android:id="@+id/title_logo"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/ic_launcher"
 
-        android:layout_below="@+id/label_player_name"/>
+        android:layout_margin="20dp"/>
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_correct_answers"
-        android:id="@+id/label_correct_answers"
 
-        android:labelFor="@id/out_correct_answers"
-        android:layout_below="@+id/label_score"/>
+        android:layout_below="@id/title_results"
+        android:layout_marginTop="30dp"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_category"
-        android:id="@+id/label_category"
-        android:labelFor="@id/out_player_name"
+        android:layout_centerHorizontal="true">
 
-        android:layout_below="@+id/label_correct_answers"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/label_results_difficulty"
-        android:id="@+id/label_difficulty"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_results_score"
+                android:id="@+id/label_score"
 
-        android:layout_below="@id/label_category"
-        />
+                android:layout_below="@+id/label_player_name"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_results_category"
+                android:id="@+id/label_category"
 
-    // Score
+                android:layout_below="@+id/label_correct_answers"/>
 
-    // Correct Answers
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/debug_default_text"
+                android:id="@+id/out_score"
 
-    // Category
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/label_score"
+                android:layout_alignBaseline="@+id/label_score"/>
 
-    // Difficulty
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_results_correct_answers"
+                android:id="@+id/label_correct_answers"
 
-    // Ok Button
+                android:layout_below="@+id/label_score"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_results_difficulty"
+                android:id="@+id/label_difficulty"
+
+                android:layout_below="@id/label_category"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/label_results_name"
+                android:id="@+id/label_player_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/debug_default_text"
+                android:id="@+id/out_correct_answers"
+
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/label_correct_answers"
+                android:layout_alignBaseline="@+id/label_correct_answers"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/debug_default_text"
+                android:id="@+id/out_player_name"
+
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/label_player_name"
+                android:layout_alignBaseline="@+id/label_player_name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/debug_default_text"
+                android:id="@+id/out_difficulty"
+
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/label_difficulty"
+                android:layout_alignBaseline="@+id/label_difficulty"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/debug_default_text"
+                android:id="@+id/out_category"
+
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/label_category"
+                android:layout_alignBaseline="@+id/label_category"/>
+        </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"

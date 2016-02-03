@@ -30,14 +30,14 @@ public class Player {
     private String _name;
     private int _id;
     private int _score;
-    private int _trails;
+    private int _tries;
     private int _correct;
 
     public Player(String name, int id){
         _name = name;
         _id = id;
         _score = 0;
-        _trails = 0;
+        _tries = 0;
         _correct = 0;
     }
 
@@ -57,12 +57,12 @@ public class Player {
         _score += score;
     }
 
-    public void addTrail(){
-        _trails++;
+    public void addTry(){
+        _tries++;
     }
 
-    public int getTrails(){
-        return _trails;
+    public int getTries(){
+        return _tries;
     }
 
     public int getCorrectCount(){

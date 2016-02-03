@@ -65,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         _context = context;
 
-    if(!dbExists() || BuildConfig.DEBUG){
+    if(!dbExists() || App.DEBUG_COPY_DATABASE){
             this.getReadableDatabase();
 
             try{

@@ -26,12 +26,12 @@
             android:label="@string/title_activity_profile_creation"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".Activity.QuizSetup"
+            android:name=".Activity.Setup"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_quiz_setup"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".Activity.QuizStage"
+            android:name=".Activity.Stage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_quiz_stage"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" />

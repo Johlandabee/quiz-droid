@@ -2,7 +2,6 @@ package de.thenutheads.jlndbe.quizdroid.Logic;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.TimerTask;
 
 import de.thenutheads.jlndbe.quizdroid.App;
 import de.thenutheads.jlndbe.quizdroid.DatabaseHelper;
@@ -49,16 +47,18 @@ public class QuizManager {
     private static QuizManagerState _state = QuizManagerState.UNINITIALIZED;
 
     private final static String DEBUG_LOG_TAG = "QDQuizManager";
-    private final boolean       DEBUG_IGNORE_CATEGORY = false;
-    private final boolean       DEBUG_IGNORE_DIFFICULTY = false;
+    public final static int SCORE_BASE = 100;
 
     private Context      _context;
-    private QuizSettings _qSettings;
+    private Settings _qSettings;
 
+    private int _totalQuestions;
+    private int _cqIndex;
     private Queue<Question> _qQueue;
 
-    private List<Player> _pList;
-    private List<QuizCategory> _cList;
+    private ArrayList<Player> _pList;
+    private ArrayList<Category> _cList;
+    private Mode _mode;
 
     //--------------------------------------------------------------------------------------------->
 
@@ -70,6 +70,11 @@ public class QuizManager {
         _qQueue = new LinkedList<>();
         _pList = new ArrayList<>();
         _cList = new ArrayList<>();
+
+        _totalQuestions = 0;
+        _cqIndex = 0;
+
+        _mode = Mode.NONE;
 
         setCategoryList();
 
@@ -85,6 +90,12 @@ public class QuizManager {
         }
         Log.d(DEBUG_LOG_TAG, "getInstance(): Returning instance");
         return _instance;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public static QuizManagerState getState(){
+        return _state;
     }
 
     //--------------------------------------------------------------------------------------------->
@@ -105,6 +116,8 @@ public class QuizManager {
         Log.d(DEBUG_LOG_TAG,String.format("getNextQuestion(): Elements in questions queue: %d",
                 _qQueue.size()));
 
+        _cqIndex++;
+
         return _qQueue.poll();
     }
 
@@ -122,11 +135,23 @@ public class QuizManager {
 
     //--------------------------------------------------------------------------------------------->
 
-    public QuizSettings getSettings(){
+    public Settings getSettings(){
         if (_qSettings == null)
             return null;
 
         return _qSettings;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public void setMode(Mode mode){
+        _mode = mode;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public Mode getMode(){
+        return _mode;
     }
 
     //--------------------------------------------------------------------------------------------->
@@ -146,14 +171,16 @@ public class QuizManager {
                 "WHERE quiz_data.category=quiz_categories._id " +
                 "AND quiz_data.locale=quiz_localization._id ";
 
-        if(!DEBUG_IGNORE_DIFFICULTY)
-            sql+="AND quiz_data.difficulty BETWEEN " +
-                    (_qSettings.getQuizDifficulty().getValue() - 1) + " AND " +
-                    (_qSettings.getQuizDifficulty().getValue() + 1) + " ";
+        if(!App.DEBUG_IGNORE_DIFFICULTY) {
+            sql += "AND quiz_data.difficulty BETWEEN " +
+                    (_qSettings.getDifficulty().getValue() - 1) + " AND " +
+                    (_qSettings.getDifficulty().getValue() + 1) + " ";
+        }
 
-        if(!DEBUG_IGNORE_CATEGORY)
-            sql+= "AND quiz_categories.category_name=" + "'" +
-                    _qSettings.getQuizCategory().getCategoryName() + "'";
+        if(!App.DEBUG_IGNORE_CATEGORY) {
+            sql += "AND quiz_categories.category_name=" + "'" +
+                    _qSettings.getCategory().getCategoryName() + "'";
+        }
 
         Cursor c = DatabaseHelper.getInstance().getDb().rawQuery(sql, null);
 
@@ -190,7 +217,7 @@ public class QuizManager {
             _qQueue.add(qCache.get(b));
             qCache.remove(b);
             i++;
-            if(i == _qSettings.getQuizLength().getValue() && !qCache.isEmpty())
+            if(i == _qSettings.getLength().getValue() && !qCache.isEmpty())
                 qCache.clear();
         }
 
@@ -198,31 +225,44 @@ public class QuizManager {
         Log.d(DEBUG_LOG_TAG, String.format("setQuestionQueue():\n" +
                         "\tCategory=%s\n" +
                         "\tLength=%s (%d)\n" +
-                        "\tMode=%s\n" +
                         "\tDifficulty=%s (%d)",
-                _qSettings.getQuizCategory().getLocalizedName(),
-                _qSettings.getQuizLength().toString(),
-                _qSettings.getQuizLength().getValue(),
-                _qSettings.getQuizMode().toString(),
-                _qSettings.getQuizDifficulty().toString(),
-                _qSettings.getQuizDifficulty().getValue()));
+                _qSettings.getCategory().getLocalizedName(),
+                _qSettings.getLength().toString(),
+                _qSettings.getLength().getValue(),
+                _qSettings.getDifficulty().toString(),
+                _qSettings.getDifficulty().getValue()));
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public int start (QuizSettings settings){
+    public int start(Settings settings){
         _pList.clear();
         _pList.add(new Player("Leroy Jenkins", 0));
+
+        _cqIndex = 0;
 
         _qSettings = settings;
         setQuestionQueue();
 
+        _totalQuestions = _qQueue.size();
         return _qQueue.size();
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    public List<QuizCategory> getCategoryList(){
+    public int getTotal(){
+        return _totalQuestions;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public int getCurrent(){
+        return _cqIndex;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public ArrayList<Category> getCategoryList(){
         if (_cList.isEmpty()){
             setCategoryList();
         }
@@ -247,7 +287,7 @@ public class QuizManager {
 
         if(c.moveToFirst()){
             while (!c.isAfterLast()){
-                _cList.add(new QuizCategory(
+                _cList.add(new Category(
                                 c.getInt(c.getColumnIndex("_id")),
                                 c.getString(c.getColumnIndex("category_name")))
                 );

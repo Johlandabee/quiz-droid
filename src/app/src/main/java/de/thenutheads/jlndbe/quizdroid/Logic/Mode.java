@@ -32,27 +32,10 @@ import de.thenutheads.jlndbe.quizdroid.R;
  * SOFTWARE.
  */
 
-public enum QuizLength {
-    SHORT(5),
-    MEDIUM(10),
-    LONG(20),
-    VERY_LONG(40);
-
-    private final int _length;
-
-    //--------------------------------------------------------------------------------------------->
-
-    QuizLength(int length){
-        _length = length;
-    }
-
-    //--------------------------------------------------------------------------------------------->
-
-    public int getValue() {
-        return _length;
-    }
-
-    //--------------------------------------------------------------------------------------------->
+public enum Mode {
+    SINGLEPLAYER,
+    VERSUS,
+    NONE;
 
     @Override
     public String toString(){
@@ -61,21 +44,18 @@ public enum QuizLength {
 
     //--------------------------------------------------------------------------------------------->
 
-    private String toLocalizedString(QuizLength length, Context context){
-        switch (length) {
-            case SHORT:
-                return context.getString(R.string.quiz_length_short);
-            case MEDIUM:
-                return context.getString(R.string.quiz_length_medium);
-            case LONG:
-                return context.getString(R.string.quiz_length_long);
-            case VERY_LONG:
-                return context.getString(R.string.quiz_length_very_long);
-            default:
-                return null;
+    private String toLocalizedString(Mode mode, Context context){
+        String value = "NONE";
+        switch (mode) {
+            case SINGLEPLAYER:
+                value = context.getString(R.string.quiz_mode_singleplayer);
+                break;
+            case VERSUS:
+                value = context.getString(R.string.quiz_mode_versus);
+                break;
         }
+        return value;
     }
 
     //--------------------------------------------------------------------------------------------->
-
 }

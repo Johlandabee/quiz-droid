@@ -1,10 +1,5 @@
 package de.thenutheads.jlndbe.quizdroid.Logic;
 
-import android.content.Context;
-
-import de.thenutheads.jlndbe.quizdroid.App;
-import de.thenutheads.jlndbe.quizdroid.R;
-
 /**
  * Created by Jlndbe on 24.01.2016.
  * <p/>
@@ -32,28 +27,36 @@ import de.thenutheads.jlndbe.quizdroid.R;
  * SOFTWARE.
  */
 
-public enum QuizMode {
-    SINGLEPLAYER,
-    VERSUS;
+public class Settings {
 
-    @Override
-    public String toString(){
-        return toLocalizedString(this, App.getContext());
+    private Difficulty _difficultyPreset;
+    private Category _Category;
+    private Length _LengthPreset;
+
+    //--------------------------------------------------------------------------------------------->
+
+    public Settings(Difficulty difficulty, Category category, Length length) {
+        _LengthPreset = length;
+        _difficultyPreset = difficulty;
+        _Category = category;
     }
 
     //--------------------------------------------------------------------------------------------->
 
-    private String toLocalizedString(QuizMode mode, Context context){
-        String value = "";
-        switch (mode) {
-            case SINGLEPLAYER:
-                value = context.getString(R.string.quiz_mode_singleplayer);
-                break;
-            case VERSUS:
-                value = context.getString(R.string.quiz_mode_versus);
-                break;
-        }
-        return value;
+    public Category getCategory(){
+        return _Category;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public Difficulty getDifficulty() {
+        return _difficultyPreset;
+    }
+
+    //--------------------------------------------------------------------------------------------->
+
+    public Length getLength(){
+        return _LengthPreset;
     }
 
     //--------------------------------------------------------------------------------------------->

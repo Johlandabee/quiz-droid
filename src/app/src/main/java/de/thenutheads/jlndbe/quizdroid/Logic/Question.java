@@ -77,7 +77,7 @@ public class Question {
     //--------------------------------------------------------------------------------------------->
 
     public String[] getAnswers(){
-        return Arrays.copyOfRange(_questionData, 1, 4);
+        return Arrays.copyOfRange(_questionData, 1, 5);
     }
 
     //--------------------------------------------------------------------------------------------->

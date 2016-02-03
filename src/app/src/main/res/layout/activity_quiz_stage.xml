@@ -3,29 +3,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="de.thenutheads.jlndbe.quizdroid.Activity.QuizStage">
+    tools:context=".Activity.Stage">
 
-    <EditText
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title_activity_quiz_stage"
+        android:id="@+id/title_stage"
+        android:layout_margin="20dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_logo"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/ic_launcher"
+
+        android:layout_margin="20dp"
+        android:contentDescription="@string/description_app_logo" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
         android:id="@+id/txt_question"
         android:text="@string/debug_lorem_ipsum"
-        />
+
+        android:layout_below="@id/title_stage"
+        android:layout_margin="15dp"
+        android:textSize="24sp"
+        android:outlineProvider="paddedBounds" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quiz_progress"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_skip_question"
+        android:src="@android:drawable/ic_media_next"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_margin="10dp"
+        android:contentDescription="@string/description_skip_question" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/stage_tries"
+        android:id="@+id/label_trails"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/example_tries"
+        android:id="@+id/txt_tries"
+        android:textStyle="bold"
+
+        android:layout_alignBaseline="@id/label_trails"
+        android:layout_toRightOf="@id/label_trails"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/txt_question">
+        android:layout_below="@id/txt_question"
+        android:id="@+id/linearLayout"
+        android:onClick="onClick_SkipQuestion">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_answer_a"
             android:textStyle="normal"
-            android:onClick="onSelectAnswer"
+            android:onClick="onClick_Answer"
             android:text="@string/debug_lorem_ipsum_short"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <Button
@@ -34,7 +107,11 @@
             android:id="@+id/btn_answer_b"
             android:textStyle="normal"
             android:text="@string/debug_lorem_ipsum_short"
-            android:onClick="onSelectAnswer"
+            android:onClick="onClick_Answer"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <Button
@@ -43,7 +120,11 @@
             android:id="@+id/btn_answer_c"
             android:textStyle="normal"
             android:text="@string/debug_lorem_ipsum_short"
-            android:onClick="onSelectAnswer"
+            android:onClick="onClick_Answer"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <Button
@@ -52,17 +133,11 @@
             android:id="@+id/btn_answer_d"
             android:textStyle="normal"
             android:text="@string/debug_lorem_ipsum_short"
-            android:onClick="onSelectAnswer"
+            android:onClick="onClick_Answer"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             />
     </LinearLayout>
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

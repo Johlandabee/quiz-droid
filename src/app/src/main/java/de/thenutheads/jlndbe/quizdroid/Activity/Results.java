@@ -4,17 +4,26 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import de.thenutheads.jlndbe.quizdroid.App;
+import de.thenutheads.jlndbe.quizdroid.ErrorCode;
 import de.thenutheads.jlndbe.quizdroid.Logic.Player;
 import de.thenutheads.jlndbe.quizdroid.Logic.QuizManager;
-import de.thenutheads.jlndbe.quizdroid.Logic.QuizSettings;
+import de.thenutheads.jlndbe.quizdroid.Logic.QuizManagerState;
+import de.thenutheads.jlndbe.quizdroid.Logic.Settings;
 import de.thenutheads.jlndbe.quizdroid.R;
 
 public class Results extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(QuizManager.getState() != QuizManagerState.INITIALIZED){
+            Toast.makeText(this, ErrorCode.QUIZ_MANAGER_NOT_INITIALIZED.toString(), Toast.LENGTH_LONG).show();
+            App.delayedExit(ErrorCode.QUIZ_MANAGER_NOT_INITIALIZED.getValue());
+        }
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_results);
@@ -30,17 +39,17 @@ public class Results extends Activity {
                  difficulty = (TextView) findViewById(R.id.out_difficulty);
 
         Player player = QuizManager.getInstance().getActivePlayer();
-        QuizSettings settings = QuizManager.getInstance().getSettings();
+        Settings settings = QuizManager.getInstance().getSettings();
 
         name.setText(player.getName());
         score.setText(String.format("%s",player.getScore()));
         correctAnswers.setText(String.format("%d/%d", player.getCorrectCount(),
-                settings.getQuizLength().getValue()));
+            QuizManager.getInstance().getTotal()));
 
-        category.setText(settings.getQuizCategory().getLocalizedName());
+        category.setText(settings.getCategory().getLocalizedName());
 
 
-        difficulty.setText(settings.getQuizDifficulty().toString());
+        difficulty.setText(settings.getDifficulty().toString());
 
     }
 
