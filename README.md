@@ -1,6 +1,6 @@
 # QuizDroid #
 
-A little Quip-App for Android devices utilizing SQLite.
+A little Quiz-App for Android devices utilizing SQLite.
 
 ### Info ###
 
