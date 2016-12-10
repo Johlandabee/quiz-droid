@@ -1,5 +1,4 @@
-Steven Jlndbe Wobser
+Steven Wobser (Code)
 Simon Rickel (Launcher icon)
-Jan Mäder
-Jan Grunow
-Lukas Schmelcher
+Jan MÃ¤der (SQLite database)
+Jan Grunow (Appearance)
